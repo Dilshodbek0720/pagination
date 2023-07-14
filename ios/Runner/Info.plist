@@ -47,5 +47,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	  <key>NSLocationAlwaysUsageDescription</key>
+        <string>Ob xavo ma'lumotlari uchun joriy lokatsiyangiz kk bo'ladi</string>
+        <key>NSLocationWhenInUseUsageDescription</key>
+        <string>Ob xavo ma'lumotlari uchun joriy lokatsiyangiz kk bo'ladi</string>
 </dict>
 </plist>
