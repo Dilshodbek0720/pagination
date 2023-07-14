@@ -14,7 +14,6 @@ class ApiProvider {
     required double lat,
     required double long,
   }) async {
-    //  Uri uri = Uri.parse("$baseUrl/data/2.5/weather?lat=$lat&lon=$long&appid=$apiKeyForMain");
 
     Uri uri = Uri.https(
       baseUrlWithoutHttp,
@@ -31,6 +30,7 @@ class ApiProvider {
     try {
       http.Response response = await http.get(uri);
       if (response.statusCode == HttpStatus.ok) {
+        print("TIME ZONE:${jsonDecode(response.body)["timezone"]}");
         return UniversalData(
             data: OneCallData.fromJson(jsonDecode(response.body)));
       }

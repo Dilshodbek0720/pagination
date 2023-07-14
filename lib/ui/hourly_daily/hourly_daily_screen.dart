@@ -20,7 +20,7 @@ class _HourlyDailyScreenState extends State<HourlyDailyScreen> {
       body: FutureBuilder<UniversalData>(
         future: ApiProvider.getWeatherOneCallData(
           lat: 41.93467,
-          long: 69.53564564,
+          long: 69.535645,
         ),
         builder: (BuildContext context, AsyncSnapshot<UniversalData> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
