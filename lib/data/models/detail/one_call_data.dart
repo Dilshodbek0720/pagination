@@ -3,17 +3,17 @@ import 'package:n8_default_project/data/models/detail/daily_item/daily_item.dart
 import 'hourly_item/hourly_item.dart';
 
 class OneCallData {
-  double lat;
+  final double lat;
 
-  double lon;
+  final double lon;
 
-  String timezone;
+  final String timezone;
 
-  int timezoneOffset;
+  final int timezoneOffset;
 
-  List<HourlyItem> hourly;
+  final List<HourlyItem> hourly;
 
-  List<DailyItem> daily;
+  final List<DailyItem> daily;
 
   OneCallData({
     required this.lat,

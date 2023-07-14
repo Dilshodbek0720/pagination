@@ -3,41 +3,26 @@ import 'package:n8_default_project/data/models/detail/daily_item/daily_temp.dart
 import 'package:n8_default_project/data/models/main/weather_model.dart';
 
 class DailyItem {
-  int dt;
+  final int dt;
 
-  int sunrise;
+  final int sunrise;
+  final int sunset;
 
-  int sunset;
-
-  int moonrise;
-
-  int moonset;
-
-  double moonPhase;
-
-  DailyTemp dailyTemp;
-
-  DailyFeelsLike dailyFeelsLike;
-
-  int pressure;
-
-  int humidity;
-
-  double dewPoint;
-
-  double windSpeed;
-
-  int windDeg;
-
-  double windGust;
-
-  List<WeatherModel> weather;
-
-  int clouds;
-
-  double pop;
-
-  double uvi;
+  final int moonrise;
+  final int moonSet;
+  final double moonPhase;
+  final DailyTemp dailyTemp;
+  final DailyFeelsLike dailyFeelsLike;
+  final int pressure;
+  final int humidity;
+  final double dewPoint;
+  final double windSpeed;
+  final int windDeg;
+  final double windGust;
+  final List<WeatherModel> weather;
+  final int clouds;
+  final double pop;
+  final double uvi;
 
   DailyItem({
     required this.dailyFeelsLike,
@@ -57,7 +42,7 @@ class DailyItem {
     required this.sunrise,
     required this.moonPhase,
     required this.moonrise,
-    required this.moonset,
+    required this.moonSet,
   });
 
   factory DailyItem.fromJson(Map<String, dynamic> json) => DailyItem(
@@ -82,7 +67,7 @@ class DailyItem {
         sunrise: json['sunrise'] as int? ?? 0,
         moonPhase: (json['moon_phase'] as num?)?.toDouble() ?? 0.0,
         moonrise: json['moonrise'] as int? ?? 0,
-        moonset: json['moonset'] as int? ?? 0,
+        moonSet: json['moonset'] as int? ?? 0,
       );
 
   @override
@@ -92,7 +77,7 @@ class DailyItem {
      sunrise: $sunrise
      sunset: $sunset
      moonrise: $moonrise
-     moonset: $moonset
+     moonset: $moonSet
      dailyTemp: ${dailyTemp.toString()}
      dailyFeelsLike: ${dailyFeelsLike.toString()}
      pressure: $pressure

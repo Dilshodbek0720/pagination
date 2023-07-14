@@ -1,32 +1,32 @@
 import 'package:n8_default_project/data/models/main/weather_model.dart';
 
 class HourlyItem {
-  int dt;
-  double temp;
+  final int dt;
+  final double temp;
 
-  double feelsLike;
+  final double feelsLike;
 
-  int pressure;
+  final  int pressure;
 
-  int humidity;
+  final  int humidity;
 
-  double dewPoint;
+  final  double dewPoint;
 
-  double uvi;
+  final double uvi;
 
-  int clouds;
+  final int clouds;
 
-  int visibility;
+  final int visibility;
 
-  double windSpeed;
+  final  double windSpeed;
 
-  int windDeg;
+  final  int windDeg;
 
-  double windGust;
+  final  double windGust;
 
-  List<WeatherModel> weather;
+  final List<WeatherModel> weather;
 
-  double pop;
+  final double pop;
 
   HourlyItem({
     required this.weather,

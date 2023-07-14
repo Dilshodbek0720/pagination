@@ -1,13 +1,11 @@
-
-
 class DailyFeelsLike {
-  double day;
+  final double day;
 
-  double night;
+  final double night;
 
-  double eve;
+  final double eve;
 
-  double morn;
+  final double morn;
 
   DailyFeelsLike({
     required this.day,
@@ -16,8 +14,7 @@ class DailyFeelsLike {
     required this.night,
   });
 
-  factory DailyFeelsLike.fromJson(Map<String, dynamic> json) =>
-      DailyFeelsLike(
+  factory DailyFeelsLike.fromJson(Map<String, dynamic> json) => DailyFeelsLike(
         day: (json['day'] as num?)?.toDouble() ?? 0.0,
         eve: (json['eve'] as num?)?.toDouble() ?? 0.0,
         morn: (json['morn'] as num?)?.toDouble() ?? 0.0,

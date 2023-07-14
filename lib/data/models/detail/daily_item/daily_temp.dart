@@ -1,24 +1,15 @@
-
-
-// "day": 30.29,
-// "min": 23.09,
-// "max": 30.29,
-// "night": 24.53,
-// "eve": 29.06,
-// "morn": 23.26
-
 class DailyTemp {
-  double day;
+  final double day;
 
-  double min;
+  final double min;
 
-  double max;
+  final double max;
 
-  double night;
+  final double night;
 
-  double eve;
+  final double eve;
 
-  double morn;
+  final double morn;
 
   DailyTemp({
     required this.day,

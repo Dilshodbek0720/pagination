@@ -14,7 +14,6 @@ class ApiProvider {
     required double lat,
     required double long,
   }) async {
-
     Uri uri = Uri.https(
       baseUrlWithoutHttp,
       "/data/2.5/onecall",
@@ -30,7 +29,6 @@ class ApiProvider {
     try {
       http.Response response = await http.get(uri);
       if (response.statusCode == HttpStatus.ok) {
-        print("TIME ZONE:${jsonDecode(response.body)["timezone"]}");
         return UniversalData(
             data: OneCallData.fromJson(jsonDecode(response.body)));
       }
@@ -49,8 +47,6 @@ class ApiProvider {
     required double lat,
     required double long,
   }) async {
-    //  Uri uri = Uri.parse("$baseUrl/data/2.5/weather?lat=$lat&lon=$long&appid=$apiKeyForMain");
-
     Uri uri = Uri.https(
       baseUrlWithoutHttp,
       "/data/2.5/weather",
@@ -73,7 +69,6 @@ class ApiProvider {
     } on FormatException {
       return UniversalData(error: "Format Error!");
     } catch (err) {
-      debugPrint("ERROR:$err. ERROR TYPE: ${err.runtimeType}");
       return UniversalData(error: err.toString());
     }
   }
@@ -111,7 +106,6 @@ class ApiProvider {
     //   return UniversalData(error: "TYPE ERROR");
     // }
     catch (err) {
-      debugPrint("ERROR:$err. ERROR TYPE: ${err.runtimeType}");
       return UniversalData(error: err.toString());
     }
   }
