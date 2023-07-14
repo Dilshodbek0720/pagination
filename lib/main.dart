@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:n8_default_project/ui/splash/splash_screen.dart';
-import 'package:n8_default_project/ui/weather_info/weather_info_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
-

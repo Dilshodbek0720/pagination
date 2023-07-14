@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:n8_default_project/data/models/main/lat_lon.dart';
-import 'package:n8_default_project/ui/weather_info/weather_info_screen.dart';
+import 'package:n8_default_project/ui/main_weather_info/main_weather_info_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,32 +16,32 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _getLocation() async {
     Location location = Location();
 
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-    LocationData _locationData;
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+    LocationData locationData;
 
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
         return;
       }
     }
 
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
         return;
       }
     }
 
-    _locationData = await location.getLocation();
+    locationData = await location.getLocation();
 
     setState(() {
       latLong = LatLong(
-        lat: _locationData.latitude!,
-        long: _locationData.longitude!,
+        lat: locationData.latitude!,
+        long: locationData.longitude!,
       );
     });
   }
@@ -52,8 +52,8 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 1));
 
     if (context.mounted) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return WeatherInfoScreen(
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        return MainWeatherInfoScreen(
           latLong: latLong!,
         );
       }));
