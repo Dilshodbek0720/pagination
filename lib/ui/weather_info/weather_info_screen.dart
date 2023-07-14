@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:n8_default_project/data/models/main/lat_lon.dart';
 import 'package:n8_default_project/data/models/main/weather_main_model.dart';
 import 'package:n8_default_project/data/models/universal_data.dart';
 import 'package:n8_default_project/data/network/api_provider.dart';
 import 'package:n8_default_project/ui/hourly_daily/hourly_daily_screen.dart';
 
 class WeatherInfoScreen extends StatefulWidget {
-  const WeatherInfoScreen({Key? key}) : super(key: key);
+  const WeatherInfoScreen({Key? key, required this.latLong}) : super(key: key);
+
+
+  final LatLong latLong;
 
   @override
   State<WeatherInfoScreen> createState() => _WeatherInfoScreenState();
@@ -26,7 +30,10 @@ class _WeatherInfoScreenState extends State<WeatherInfoScreen> {
         ],
       ),
       body: FutureBuilder<UniversalData>(
-        future: ApiProvider.getMainWeatherDataByQuery(query: "Tashkent"),
+        future: ApiProvider.getMainWeatherDataByLatLong(
+          lat: widget.latLong.lat,
+          long: widget.latLong.long,
+        ),
         builder: (BuildContext context, AsyncSnapshot<UniversalData> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(

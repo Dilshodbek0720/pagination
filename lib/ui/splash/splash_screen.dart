@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:n8_default_project/data/models/main/lat_lon.dart';
+import 'package:n8_default_project/ui/weather_info/weather_info_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,7 +13,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   LatLong? latLong;
 
-  _getLocation() async {
+  Future<void> _getLocation() async {
     Location location = Location();
 
     bool _serviceEnabled;
@@ -45,14 +46,25 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
-  @override
-  void initState() {
-    _getLocation();
-    super.initState();
+  _init() async {
+    await _getLocation();
+
+    await Future.delayed(const Duration(seconds: 1));
+
+    if (context.mounted) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return WeatherInfoScreen(
+          latLong: latLong!,
+        );
+      }));
+    }
   }
 
-
-
+  @override
+  void initState() {
+    _init();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

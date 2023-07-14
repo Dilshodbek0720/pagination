@@ -57,7 +57,7 @@ class ApiProvider {
       {
         "appid": apiKeyForMain,
         "lat": lat,
-        "long": long,
+        "lon": long,
       },
     );
 
