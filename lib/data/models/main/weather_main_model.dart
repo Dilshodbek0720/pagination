@@ -40,7 +40,7 @@ class WeatherMainModel {
       sysInMain: SysInMain.fromJson(json["sys"]),
       windInMain: WindInMain.fromJson(json["wind"]),
       coordModel: CoordModel.fromJson(json["coord"]),
-      id: json["id"],
+      id: json["id"] as int? ?? 0,
       name: json["name"],
       code: json["cod"],
       dateTime: json["dt"],

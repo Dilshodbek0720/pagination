@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:n8_default_project/data/models/main/weather_main_model.dart';
+import 'package:n8_default_project/data/models/detail/one_call_data.dart';
 import 'package:n8_default_project/data/models/universal_data.dart';
 import 'package:n8_default_project/data/network/api_provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HourlyDailyScreen extends StatefulWidget {
+  const HourlyDailyScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HourlyDailyScreen> createState() => _HourlyDailyScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HourlyDailyScreenState extends State<HourlyDailyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Deafult screen"),
+        title: const Text("Hourly Daily screen"),
       ),
       body: FutureBuilder<UniversalData>(
-        future: ApiProvider.getMainWeatherDataByQuery(query: "Tashkent"),
+        future: ApiProvider.getWeatherOneCallData(
+          lat: 41.93467,
+          long: 69.53564564,
+        ),
         builder: (BuildContext context, AsyncSnapshot<UniversalData> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -26,12 +29,14 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           } else if (snapshot.hasData) {
             if (snapshot.data!.error.isEmpty) {
-              WeatherMainModel weatherMainModel =
-                  snapshot.data!.data as WeatherMainModel;
+              OneCallData oneCallData = snapshot.data!.data as OneCallData;
               return Center(
-                child: Text(weatherMainModel.name),
+                child: Text(oneCallData.timezone),
               );
             }
+            return Center(
+              child: Text(snapshot.data!.error),
+            );
           }
 
           return Center(
