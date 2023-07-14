@@ -8,7 +8,6 @@ import 'package:n8_default_project/ui/hourly_daily/hourly_daily_screen.dart';
 class WeatherInfoScreen extends StatefulWidget {
   const WeatherInfoScreen({Key? key, required this.latLong}) : super(key: key);
 
-
   final LatLong latLong;
 
   @override
@@ -16,17 +15,25 @@ class WeatherInfoScreen extends StatefulWidget {
 }
 
 class _WeatherInfoScreenState extends State<WeatherInfoScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Weather Info screen"),
         actions: [
-          IconButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context){
-              return HourlyDailyScreen();
-            }));
-          }, icon: const Icon(Icons.next_plan))
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return HourlyDailyScreen();
+                }));
+              },
+              icon: const Icon(Icons.next_plan))
         ],
       ),
       body: FutureBuilder<UniversalData>(

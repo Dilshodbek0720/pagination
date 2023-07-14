@@ -49,9 +49,9 @@ class WeatherMainModel {
       mainInMain: MainInMain.fromJson(json["main"]),
       timezone: json["timezone"],
       visibility: json["visibility"],
-      weatherModel: (json["weather"] as List)
-          .map((e) => WeatherModel.fromJson(e))
-          .toList(),
+      weatherModel: (json["weather"] as List?)
+          ?.map((e) => WeatherModel.fromJson(e))
+          .toList()??[],
     );
   }
 }

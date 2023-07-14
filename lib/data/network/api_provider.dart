@@ -20,8 +20,8 @@ class ApiProvider {
       "/data/2.5/onecall",
       {
         "appid": apiKeyForMain,
-        "lat": lat,
-        "lon": long,
+        "lat": lat.toString(),
+        "lon": long.toString(),
         "exclude": "minutely,current",
         "units": "metric",
       },
@@ -56,8 +56,8 @@ class ApiProvider {
       "/data/2.5/weather",
       {
         "appid": apiKeyForMain,
-        "lat": lat,
-        "lon": long,
+        "lat": lat.toString(),
+        "lon": long.toString(),
       },
     );
 

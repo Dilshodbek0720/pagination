@@ -7,10 +7,10 @@ class CoordModel {
     required this.lon,
   });
 
-  factory CoordModel.fromJson(Map<String, Object?> json) {
+  factory CoordModel.fromJson(Map<String, dynamic> json) {
     return CoordModel(
-      lat: json["lat"] as double? ?? 0.0,
-      lon: json["lon"] as double? ?? 0.0,
+      lat: (json['lat'] as num?)?.toDouble() ?? 0.0,
+      lon: (json['lon'] as num?)?.toDouble() ?? 0.0,
     );
   }
 }
