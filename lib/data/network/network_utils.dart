@@ -34,6 +34,13 @@ UniversalData handleHttpErrors(http.Response response) {
           statusCode: response.statusCode,
         );
       }
+    case HttpStatus.tooManyRequests:
+      {
+        return UniversalData(
+          error: jsonDecode(response.body)["message"],
+          statusCode: response.statusCode,
+        );
+      }
     case HttpStatus.internalServerError:
       {
         return UniversalData(
