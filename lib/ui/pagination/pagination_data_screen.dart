@@ -202,7 +202,7 @@ class _PaginationDataScreenState extends State<PaginationDataScreen> {
                               Text(
                                 organicModel.snippet,
                                 maxLines: 3,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 15.5,
                                 ),
                               ),
