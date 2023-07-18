@@ -25,6 +25,7 @@ class _PaginationDataScreenState extends State<PaginationDataScreen> {
   int countOfPage = 5;
   String queryText = "";
   bool isLoading = false;
+  int selectedMenu = 1;
 
   List<OrganicModel> organicModels = [];
 
@@ -88,11 +89,44 @@ class _PaginationDataScreenState extends State<PaginationDataScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.all(17.0),
-          child: GestureDetector(
-            onTap: (){ },
-              child: SvgPicture.asset(AppImages.burger,)),
+        leading: PopupMenuButton<int>(
+          icon: SvgPicture.asset(AppImages.burger),
+          onSelected: (v){
+            {
+              setState(() {
+                selectedMenu = v;
+              });
+              if (selectedMenu == 3) {
+                  countOfPage = 20;
+              } else {
+                if(selectedMenu == 2){
+                    countOfPage = 10;
+                }else{
+                    countOfPage = 5;
+                }
+              }
+              _fetchResult();
+            }
+          },
+          // offset: Offset(-50, 0),
+          position: PopupMenuPosition.values.first,
+          itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
+            const PopupMenuItem<int>(
+              value: 1,
+              height: 30,
+              child: Text('5'),
+            ),
+            const PopupMenuItem<int>(
+              value: 2,
+              height: 30,
+              child: Text('10'),
+            ),
+            const PopupMenuItem<int>(
+              value: 3,
+              height: 30,
+              child: Text('20'),
+            ),
+          ],
         ),
         title:SizedBox(width: 92,height: 32, child: Image.asset(AppImages.google),),
         actions: [
